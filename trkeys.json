@@ -1,0 +1,6 @@
+{
+    "Uid": "XXXXXXXX",
+    "Pwd": "XXXXXXXX",
+    "driver": "/usr/local/lib64/libsqlncli-11.0.so.1790.0",
+    "server": "XXX.XX.XXX.XXX,2866"
+}
