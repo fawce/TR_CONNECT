@@ -39,11 +39,7 @@ class WorldScope(object):
         return rows
     
     def get_worldscope_currency(self, qaid):
-        try:
-            [seccode, region] = QADirect.get_sec_code_from_id(self.conn,qaid)
-        except QADNotFound as e:
-            print "Can't Find QAId:", e.value
-            return
+        [seccode, region] = QADirect.get_sec_code_from_id(self.conn,qaid)
         
         if region == 'US':
             sql = '''select isoused 
@@ -62,11 +58,8 @@ class WorldScope(object):
                     
     def get_worldscope(self, qaid, item, freq):
         
-        try:
-            [seccode, region] = QADirect.get_sec_code_from_id(self.conn,qaid)
-        except QADNotFound as e:
-            print "Can't Find QAId:", e.value
-            return
+        [seccode, region] = QADirect.get_sec_code_from_id(self.conn,qaid)
+    
         if region == 'US':
             sql = '''select d.year_, d.seq, d.date_, value_, f.date_ from wsndata d
                     join secmapx m on m.ventype = 10 and m.vencode = d.code and rank = 1
@@ -111,13 +104,10 @@ class WorldScope(object):
 
         
     
-    def get_worldscope_list_items(self, qaid, item, freq):
+    def get_worldscope_list_items(self, qaid, meas_list, freq):
             
-            try:
-                [seccode, region] = QADirect.get_sec_code_from_id(self.conn,qaid)
-            except QADNotFound as e:
-                print 'Can\'t Find QAId:', e.value
-                return
+            [seccode, region] = QADirect.get_sec_code_from_id(self.conn,qaid)
+        
             if region == 'US':
                 sql = '''select d.year_, d.seq, d.date_, value_, f.date_ from wsndata d
                         join secmapx m on m.ventype = 10 and m.vencode = d.code and rank = 1
@@ -131,11 +121,12 @@ class WorldScope(object):
             
             #fill sql with ? to be replaced by list of qaid, measurements and 
             #freqency
-            placeholder= '?' 
-            placeholders= ', '.join(placeholder for unused in item)
-            sql = sql % placeholders
 
-            sql_items = copy.deepcopy(item)
+            measures = ', '.join('?' for meas in meas_list)
+
+            sql = sql % measures
+
+            sql_items = copy.deepcopy(meas_list)
 
             cursor = self.conn.cursor()
 
@@ -210,14 +201,9 @@ class WorldScope(object):
         series_dict_us = dict()
 
         for q in qaid:
-            try:
-                [seccode, region] = QADirect.get_sec_code_from_id(self.conn,q)
-                seccodes.append(seccode)
-                regions.append(region)
-                print seccodes, regions
-            except QADNotFound as e:
-                print "Can't Find QAId:", e.value
-                return
+            [seccode, region] = QADirect.get_sec_code_from_id(self.conn,q)
+            seccodes.append(seccode)
+            regions.append(region)
 
         #build dict of seccodes and qaid for series dict creation below
         seccode_dict = dict(zip(seccodes,qaid))

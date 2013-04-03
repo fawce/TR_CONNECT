@@ -37,7 +37,7 @@ print ibm
 print ibm.data.keys()
 
 print 'multiple securities-single measurments'
-ni_secs = tr.query(['IBM','JNJ'],'ws.1751','Q')
+ni_secs = tr.query(['IBM','APPL','GOOG'],'ws.1751','Q')
 
 print ni_secs
 print ni_secs.data.keys()

@@ -1,0 +1,10 @@
+*~
+*.pyc
+*.log
+*egg*
+.noseids
+*.tar.gz
+# setup.py working directory
+build
+# sphinx build directory
+_build

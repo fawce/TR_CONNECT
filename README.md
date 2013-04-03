@@ -1,4 +1,4 @@
-TR_API
+TR CONNECT
 ======
 
 Thomson Reuters Python API provides a pythonic interface into several Thomson Reuters DBs.
