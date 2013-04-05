@@ -40,14 +40,14 @@ class TR(QueryObject):
         if isinstance(item,list):
             db_prefix, meas = item[0].split('.')
 
-        #World Scope Query
+        #Worldscope Query
         if db_prefix == 'ws':
             df = self.get_ws()
             
             #Parse Query and Return Query Object
             return parser.parse_ws(df,qaid,item,freq,self.conn)
 
-        #World Scope Query
+        #Datastream Query
         if db_prefix == 'ds':
             return parser.parse_ds(qaid,meas,self.conn)
          
