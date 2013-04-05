@@ -3,6 +3,7 @@ from query_object import QueryObject
 import pandas
 import iopro.pyodbc
 import parser
+import os
 
 
 class TR(QueryObject):
@@ -19,7 +20,9 @@ class TR(QueryObject):
             self.conn = iopro.pyodbc.connect('Driver={%s};Server={%s};Database=qai;Uid={%s};Pwd={%s}'%(creds['driver'],creds['server'],creds['Uid'],creds['Pwd']))
         except:
             raise Exception("Error connecting to TR Database.  Please makes sure you are using a json dictionary\nwith driver,server,Uid,and Pwd defined.")
-        self.df_ws = pandas.read_csv('../data/wsitem_data.csv',sep='\t')
+        #probably a better way to do this
+        data = open(os.path.join(os.path.dirname(__file__),'data/wsitem_data.csv'))
+        self.df_ws = pandas.read_csv(data,sep='\t')
 
     def get_ws(self):
         """ Returns dataframe of Worldscope names and IDs """

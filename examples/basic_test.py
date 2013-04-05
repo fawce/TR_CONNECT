@@ -12,7 +12,6 @@ Measurements:
 3051: short term debt
 '''
 import os, json,sys
-sys.path.append('../')
 from tr_connect import TR
 
 creds = None
