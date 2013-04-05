@@ -16,6 +16,7 @@ versioneer.parentdir_prefix = 'tr_connect-'
 #       version='1.0',
 #       py_modules=['foo'],
 #       )
+cmdclass = versioneer.get_cmdclass()
 
 setup(
     name = 'tr_connect',
@@ -24,5 +25,6 @@ setup(
     author = 'Benjamin Zaitlen',
     author_email = 'ben.zaitlen@continuum.io',
     packages = ['tr_connect'],
-    package_data = {'tr_connect':['data/*']}
+    package_data = {'tr_connect':['data/*']},
+    cmdclass = cmdclass,
 )
