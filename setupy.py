@@ -25,6 +25,8 @@ setup(
     author = 'Benjamin Zaitlen',
     author_email = 'ben.zaitlen@continuum.io',
     packages = ['tr_connect'],
-    package_data = {'tr_connect':['data/*']},
+    package_dir = {'tr_connect':''},
+    include_package_data=True,
+    package_data = {'tr_connect':['data/*','examples/*']},
     cmdclass = cmdclass,
 )
