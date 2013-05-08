@@ -21,11 +21,12 @@ from tr_connect import TR
 creds = None
 
 if creds == None:
-    cred_path = os.path.join(os.environ['HOME'],'trkeys.json')
-    with open(cred_path,'r') as f:
-        creds = json.load(f)
+    try:
+        from wakaridata.trdata import *
+    except:
+        print 'Valid TR credentials unavailable'
 
-tr = TR(creds)
+tr = TR(tr_creds)
 
 print 'Total Return Unitless'
 totalreturn = tr.query('JNJ','ds.totalreturn')

@@ -19,7 +19,7 @@ class TR(QueryObject):
             print 'connecting to TR Database'
             self.conn = iopro.pyodbc.connect('Driver={%s};Server={%s};Database=qai;Uid={%s};Pwd={%s}'%(creds['driver'],creds['server'],creds['Uid'],creds['Pwd']))
         except:
-            raise Exception("Error connecting to TR Database.  Please makes sure you are using a json dictionary\nwith driver,server,Uid,and Pwd defined.")
+            raise Exception("Error connecting to TR Database.  Please makes sure you are using a json dictionary\nwith valid driver,server,Uid,and Pwd defined.")
         #probably a better way to do this
         data = open(os.path.join(os.path.dirname(__file__),'data/wsitem_data.csv'))
         self.df_ws = pandas.read_csv(data,sep='\t')
