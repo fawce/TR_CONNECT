@@ -7,15 +7,11 @@ from distutils.core import setup
 import versioneer
 
 
-versioneer.versionfile_source = 'tr_connect/_version.py'
+versioneer.versionfile_source = 'TR_CONNECT/tr_connect/_version.py'
 versioneer.versionfile_build = 'tr_connect/_version.py'
 versioneer.tag_prefix = ''
 versioneer.parentdir_prefix = 'tr_connect-'
 
-# setup(name='foo',
-#       version='1.0',
-#       py_modules=['foo'],
-#       )
 cmdclass = versioneer.get_cmdclass()
 
 setup(
