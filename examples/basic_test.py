@@ -14,15 +14,15 @@ Measurements:
 import os, json,sys
 from tr_connect import TR
 
-creds = None
+tr_creds = None
 
-if creds == None:
+if tr_creds == None:
     try:
         from wakaridata.trdata import *
     except:
         print 'Valid TR credentials unavailable'
 
-tr = TR(creds)
+tr = TR(tr_creds)
 
 print 'single security-single measurement'
 jnj =  tr.query('JNJ','ws.1751','Q')
