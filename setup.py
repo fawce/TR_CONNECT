@@ -7,7 +7,7 @@ from distutils.core import setup
 import versioneer
 
 
-versioneer.versionfile_source = 'TR_CONNECT/tr_connect/_version.py'
+versioneer.versionfile_source = 'tr_connect/_version.py'
 versioneer.versionfile_build = 'tr_connect/_version.py'
 versioneer.tag_prefix = ''
 versioneer.parentdir_prefix = 'tr_connect-'
@@ -21,7 +21,6 @@ setup(
     author = 'Benjamin Zaitlen',
     author_email = 'ben.zaitlen@continuum.io',
     packages = ['tr_connect'],
-    package_dir = {'tr_connect':''},
     include_package_data=True,
     package_data = {'tr_connect':['data/*','examples/*']},
     install_requires=['iopro>=1.4.3', 'pandas>=0.10.1','numpy>=1.7'],
