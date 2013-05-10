@@ -40,14 +40,12 @@ class DataStream(object):
         if region == 'US':
             sql = '''select marketdate, ri 
                 from Ds2PrimQtRI q join secmapx m on 
-                m.vencode = q.infocode and m.ventype = 33 and rank = 1 and q.marketdate 
-                between m.startdate and m.enddate
+                m.vencode = q.infocode and m.ventype = 33 and rank = 1 
                 where m.seccode = ?'''
         elif region == 'G':
             sql = '''select marketdate, ri 
                 from Ds2PrimQtRI q join gsecmapx m on 
-                m.vencode = q.infocode and m.ventype = 33 and rank = 1 and q.marketdate 
-                between m.startdate and m.enddate
+                m.vencode = q.infocode and m.ventype = 33 and rank = 1 
                 where m.seccode = ?'''
         
         cursor = self.conn.cursor()
@@ -82,7 +80,6 @@ class DataStream(object):
             sql = '''select marketdate, ''' + item + adjuster + ''', q.ISOCurrCode
                 from Ds2PrimQtPrc q join secmapx m on 
                 m.vencode = q.infocode and m.ventype = 33 and rank = 1 
-                    and q.marketdate between m.startdate and m.enddate
                 join ds2Adj a on a.infocode = q.infocode 
                     and q.marketdate between adjdate and isnull(endadjdate, '2079-06-06') and AdjType = 2
                 join ds2exchqtinfo e on e.infocode = q.infocode 
@@ -92,7 +89,6 @@ class DataStream(object):
             sql = '''select marketdate, ''' + item + adjuster + ''', q.ISOCurrCode
                 from Ds2PrimQtPrc q join gsecmapx m on 
                 m.vencode = q.infocode and m.ventype = 33 and rank = 1 
-                    and q.marketdate between m.startdate and m.enddate
                 join ds2Adj a on a.infocode = q.infocode 
                     and q.marketdate between adjdate and isnull(endadjdate, '2079-06-06') and AdjType = 2
                 join ds2exchqtinfo e on e.infocode = q.infocode 
@@ -118,7 +114,6 @@ class DataStream(object):
             sql = '''select marketdate, ''' + ' ,'.join(query) + '''*CumAdjFactor * case when priceunit  = 'E+02' then 100 else 1 end, q.ISOCurrCode
                     from Ds2PrimQtPrc q join secmapx m on 
                     m.vencode = q.infocode and m.ventype = 33 and rank = 1 
-                        and q.marketdate between m.startdate and m.enddate
                     join ds2Adj a on a.infocode = q.infocode 
                         and q.marketdate between adjdate and isnull(endadjdate, '2079-06-06') and AdjType = 2
                     join ds2exchqtinfo e on e.infocode = q.infocode 
@@ -128,7 +123,6 @@ class DataStream(object):
             sql = '''select marketdate, ''' + ' ,'.join(query) + '''*CumAdjFactor * case when priceunit  = 'E+02' then 100 else 1 end, q.ISOCurrCode
                     from Ds2PrimQtPrc q join gsecmapx m on 
                     m.vencode = q.infocode and m.ventype = 33 and rank = 1 
-                        and q.marketdate between m.startdate and m.enddate
                     join ds2Adj a on a.infocode = q.infocode 
                         and q.marketdate between adjdate and isnull(endadjdate, '2079-06-06') and AdjType = 2
                     join ds2exchqtinfo e on e.infocode = q.infocode 
