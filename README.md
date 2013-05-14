@@ -5,7 +5,7 @@ Thomson Reuters Python API provides a pythonic interface into several Thomson Re
 
  * Worldscope Fundamentals
  * Datastream Equity Pricing
- * I/B/E/S
+
 
 Currently, Worldscope and Datastream are supported with I/B/E/S support coming soon.
 
