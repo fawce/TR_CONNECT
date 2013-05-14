@@ -1,0 +1,20 @@
+A   Annual
+B   Restated - Annual
+C   Current
+D   Daily
+E   Restated - Quarterly Cumulative
+F   Restated - Semi-Annual 
+G   Annual U.S. GAAP Data (ADRs only) 
+H   Quarterly U.S. GAAP Data (ADRs only) 
+I   Quarterly - Cumulative U.S. GAPP Data (ADRs only)
+J   Adjustment Period
+K   Restated - Trimester
+L   Restated - Trimester Cumulative
+M   Monthly
+Q   Quarterly
+R   Quarterly - Cumulative
+S   Semi-Annual
+T   Trimester
+U   Trimester-Cumulative
+W   Weekly
+@   Restated - Quarterly
