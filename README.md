@@ -71,8 +71,37 @@ tr.query('security','ds.measure')
 
 *The Datastream DB stores daily open, high, low, close, etc.  as such, frequency defaults to 'D'*
 
+Available measures from Datastream are (all measures are fully adjusted):
+
+* high
+* low
+* open
+* close
+* volume
+* bid
+* ask
+* vwap
+ * the volume-weighted average price for the day
+* mosttrdprc
+ * the most-traded price
+* consolvol
+ * the consolidated volume
+* mosttrdvol
+ * the most-traded volume
+* totalreturn
+ * the total return of the security, including dividends, distributions, and spinoffs.
+* ohlc 
+ * a convenience measure which returns open, high, low, and close
+
+
+
 #Worldscope
 tr.query('security','ws.measure','frequency')
+The measures available for Worldscope are found in the wsitem_data.csv file distributed with the library. The measure is a four digit number corresponding to the description found in the wsitem_data.csv file. 
+
+Example:
+
+tr.query('IBM', 'ws.1001', 'Q') retrieves the Net Sales or Revenues for IBM, on a quarterly basis.
 
 
 Searching for IDs
