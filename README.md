@@ -92,7 +92,10 @@ Available measures from Datastream are (all measures are fully adjusted):
  * the total return of the security, including dividends, distributions, and spinoffs.
 * ohlc 
  * a convenience measure which returns open, high, low, and close
+ 
+Example:
 
+tr.query('MSFT', 'ds.vwap') retrieves the time-series history of VWAP for Microsoft. 
 
 
 #Worldscope
@@ -101,7 +104,7 @@ The measures available for Worldscope are found in the wsitem_data.csv file dist
 
 Example:
 
-tr.query('IBM', 'ws.1001', 'Q') retrieves the Net Sales or Revenues for IBM, on a quarterly basis.
+tr.query('IBM', 'ws.1001', 'Q') retrieves the time-series history of Net Sales or Revenues for IBM, on a quarterly basis.
 
 
 Searching for IDs
