@@ -14,15 +14,7 @@ Measurements:
 import os, json,sys
 from tr_connect import TR
 
-tr_creds = None
-
-if tr_creds == None:
-    try:
-        from wakaridata.trdata import *
-    except:
-        print 'Valid TR tr_credentials unavailable'
-
-tr = TR(tr_creds)
+tr = TR()
 jnj =  tr.query('JNJ','ws.1751','Q')
 
 print jnj

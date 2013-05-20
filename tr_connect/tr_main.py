@@ -9,15 +9,19 @@ import os
 class TR(QueryObject):
     """ Represents a connection to a Thomson Reuters database """
 
-    def __init__(self,creds):
+    def __init__(self,creds=None):
         """
         conn: Data source; can be file name, file object, or StringIO object.
         parser: Type of parser for parsing text. Valid parser types are 'csv',
         'fixed width', and 'regex'
         """
+
         try:
-            print 'connecting to TR Database'
-            self.conn = iopro.pyodbc.connect('Driver={%s};Server={%s};Database=qai;Uid={%s};Pwd={%s}'%(creds['driver'],creds['server'],creds['Uid'],creds['Pwd']))
+            if creds==None:
+                print 'connecting to TR Database'
+                from wakaridata.trdata import *
+                creds = tr_creds
+                self.conn = iopro.pyodbc.connect('Driver={%s};Server={%s};Database=qai;Uid={%s};Pwd={%s}'%(creds['driver'],creds['server'],creds['Uid'],creds['Pwd']))
         except:
             raise Exception("Error connecting to TR Database.  Please makes sure you are using a json dictionary\nwith valid driver,server,Uid,and Pwd defined.")
         #probably a better way to do this

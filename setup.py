@@ -21,7 +21,6 @@ setup(
     author = 'Benjamin Zaitlen',
     author_email = 'ben.zaitlen@continuum.io',
     packages = ['tr_connect'],
-    include_package_data=True,
     package_data = {'tr_connect':['data/*','examples/*']},
     install_requires=['iopro>=1.4.3', 'pandas>=0.10.1','numpy>=1.7'],
     cmdclass = cmdclass,
